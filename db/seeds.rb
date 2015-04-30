@@ -21,3 +21,14 @@ joeuser = User.where(user_id: 'joe')
                 password_digest: BCrypt::Password.create('password'),
                 admin: false
                 )
+
+tolkien = Author.where(name: 'J.R.R. Tolkien')
+  .first_or_create!(dob: '01/03/1892',
+    nationality: 'British', awards: 'Blah',
+    biography: 'Wrote Lord of the Rings',
+    image_url: 'tolkien_pic.jpg')
+
+tolkien.books.where(title: 'The Hobbit').first_or_create!(isbn: '1234-567-8910',
+      genre: 'fantasy', abstract: 'A hobbit goes on an unexpected journey.',
+      pages: 250, image_cover_url: 'hobbit_cover.jpg',
+      published_on: '06/25/1935', total_in_library: 2)
