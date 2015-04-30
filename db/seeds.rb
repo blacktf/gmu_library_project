@@ -21,3 +21,10 @@ joeuser = User.where(user_id: 'joe')
                 password_digest: BCrypt::Password.create('password'),
                 admin: false
                 )
+
+admin = User.where(user_id: 'admin')
+                .first_or_create!(
+                  name: 'Admin User',
+                  password_digest: BCrypt::Password.create('secret'),
+                  admin: true
+                )
