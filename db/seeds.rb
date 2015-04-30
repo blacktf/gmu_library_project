@@ -22,6 +22,7 @@ joeuser = User.where(user_id: 'joe')
                 admin: false
                 )
 
+#Creating authors and books
 tolkien = Author.where(name: 'J.R.R. Tolkien')
   .first_or_create!(dob: '01/03/1892',
     nationality: 'British', awards: 'Blah',
