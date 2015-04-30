@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+get "/authors" => "authors#index", as: 'authors'
   resources :books do
   end
-root 'books#index'  
+root 'books#index'
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
