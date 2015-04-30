@@ -2,8 +2,16 @@ Rails.application.routes.draw do
 get "/authors" => "authors#index", as: 'authors'
   resources :books do
   end
-root 'books#index'
-# The priority is based upon order of creation: first created -> highest priority.
+
+  root 'books#index'
+
+  # these routes are for showing users a login form, logging them in, and logging them out.
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+
+  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

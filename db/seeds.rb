@@ -22,6 +22,13 @@ joeuser = User.where(user_id: 'joe')
                 admin: false
                 )
 
+admin = User.where(user_id: 'admin')
+                .first_or_create!(
+                  name: 'Admin User',
+                  password_digest: BCrypt::Password.create('secret'),
+                  admin: true
+                )
+
 #Creating authors and books
 tolkien = Author.where(name: 'J.R.R. Tolkien')
   .first_or_create!(dob: '01/03/1892',
