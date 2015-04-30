@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-get "/authors" => "authors#index", as: 'authors'
+#get "/authors" => "authors#index", as: 'authors'
   resources :books do
   end
 root 'books#index'
