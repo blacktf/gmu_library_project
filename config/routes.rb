@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+#get "/authors" => "authors#index", as: 'authors'
   resources :books do
   end
+
   root 'books#index'
 
   # these routes are for showing users a login form, logging them in, and logging them out.
