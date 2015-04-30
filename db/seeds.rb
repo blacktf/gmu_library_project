@@ -8,6 +8,8 @@
 
 # Create user(s)
 #require 'bcrypt'
+
+# START - Create Users
 aleverett = User.where(user_id: 'aleverett')
                 .first_or_create!(
                   name: 'Al Everett',
@@ -29,7 +31,9 @@ admin = User.where(user_id: 'admin')
                   admin: true
                 )
 
-#Creating authors and books
+# END - Create Users
+
+# START - Creating authors and books
 tolkien = Author.where(name: 'J.R.R. Tolkien')
   .first_or_create!(dob: '01/03/1892',
     nationality: 'British', awards: 'Blah',
@@ -40,3 +44,5 @@ tolkien.books.where(title: 'The Hobbit').first_or_create!(isbn: '1234-567-8910',
       genre: 'fantasy', abstract: 'A hobbit goes on an unexpected journey.',
       pages: 250, image_cover_url: 'hobbit_cover.jpg',
       published_on: '06/25/1935', total_in_library: 2)
+
+# END - Creating authors and books
