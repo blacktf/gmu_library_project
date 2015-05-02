@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Reservations</h1>
+
+<ol>
+<% @reservations.each do |reservation| %>
+  <li><%= reservation.book.title %></li>
+<% end %>
+</ol>

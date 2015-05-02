@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reservations
+
 get "/authors" => "authors#index", as: 'authors'
   resources :books do
   end

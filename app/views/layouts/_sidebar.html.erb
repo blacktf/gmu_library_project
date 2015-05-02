@@ -12,7 +12,7 @@
         Authors
       </p>
       <p>
-        My Reservations
+        <%= link_to 'My Reservations', reservations_path %>
       </p>
       <% if @current_user.admin %>
         <p>
@@ -20,6 +20,9 @@
         </p>
         <p>
           Overdue Books
+        </p>
+        <p>
+          <%= link_to 'All Reservations', reservations_path %>
         </p>
       <% end %>
       <p>

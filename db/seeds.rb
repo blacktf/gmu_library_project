@@ -46,3 +46,8 @@ tolkien.books.where(title: 'The Hobbit').first_or_create!(isbn: '1234-567-8910',
       published_on: '06/25/1935', total_in_library: 2)
 
 # END - Creating authors and books
+
+# START - Creating reservations
+hobbit = Book.where( title: 'The Hobbit' ).first
+Reservation.first_or_create!( user: joeuser, book: hobbit, reserved_on: '05/01/2015', due_on: '05/08/2015')
+# END - Creating reservations
