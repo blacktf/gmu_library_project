@@ -16,7 +16,7 @@
       </p>
       <% if @current_user.admin %>
         <p>
-          New Book
+          <%= link_to 'New Book', new_book_path %>
         </p>
         <p>
           <%= link_to 'Overdue Books', overdue_path %>
