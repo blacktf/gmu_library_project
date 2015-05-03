@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
-;
+
   end
 
   def new
@@ -24,6 +24,14 @@ class ReservationsController < ApplicationController
       redirect_to user_reservations_path(@user), notice: 'Reservation created!'
     else
       render :new
+    end
+  end
+
+  def overdue
+    if @current_user.admin
+      @reservations = Reservation.overdue
+    else
+      redirect_to root_path
     end
   end
 

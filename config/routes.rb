@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :reservations
 
-get "/authors" => "authors#index", as: 'authors'
-  resources :books do
+  get "/authors" => "authors#index", as: 'authors'
+    resources :books do
   end
 
   root 'books#index'
@@ -12,6 +12,8 @@ get "/authors" => "authors#index", as: 'authors'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  # admin tools
+  get '/overdue' => 'reservations#overdue'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

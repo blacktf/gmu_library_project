@@ -31,6 +31,13 @@ admin = User.where(user_id: 'admin')
                   admin: true
                 )
 
+maryuser = User.where(user_id: 'Mary')
+              .first_or_create!(
+                name: 'Mary User',
+                password_digest: BCrypt::Password.create('password'),
+                admin: false
+                )
+
 # END - Create Users
 
 # START - Creating authors and books
@@ -40,14 +47,26 @@ tolkien = Author.where(name: 'J.R.R. Tolkien')
     biography: 'Wrote Lord of the Rings',
     image_url: 'tolkien_pic.jpg')
 
+larsson = Author.where(name: 'Stieg Larsson')
+  .first_or_create!(dob: '08/15/1954',
+    nationality: 'Swedish', awards: 'Blah',
+    biography: 'Wrote "Girl with the Dragon Tattoo" series',
+    image_url: 'larsson_pic.jpg')
+
 tolkien.books.where(title: 'The Hobbit').first_or_create!(isbn: '1234-567-8910',
       genre: 'fantasy', abstract: 'A hobbit goes on an unexpected journey.',
       pages: 250, image_cover_url: 'hobbit_cover.jpg',
       published_on: '06/25/1935', total_in_library: 2)
+
+larsson.books.where(title: 'The Girl Who Played With Fire').first_or_create!(isbn: '978-0-307-47615-9',
+      genre: 'crime', abstract: 'Crusading publisher Mikael Blomkvist has decided...',
+      pages: 724, image_cover_url: 'girl_played_fire_cover.jpg',
+      published_on: '03/01/2010', total_in_library: 1)
 
 # END - Creating authors and books
 
 # START - Creating reservations
 hobbit = Book.where( title: 'The Hobbit' ).first
 Reservation.first_or_create!( user: joeuser, book: hobbit, reserved_on: '05/01/2015', due_on: '05/08/2015')
+Reservation.first_or_create!( user: maryuser, book: hobbit, reserved_on: '04/01/2015', due_on: '04/08/2015')
 # END - Creating reservations

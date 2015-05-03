@@ -1,0 +1,7 @@
+<h1>Overdue Reservations</h1>
+
+<ol>
+<% @reservations.each do |reservation| %>
+  <li><%= link_to(reservation.book.title, reservation) %> x days overdue</li>
+<% end %>
+</ol>
