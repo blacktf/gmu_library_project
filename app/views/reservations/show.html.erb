@@ -1,0 +1,7 @@
+<h1><%= @reservation.book.title %></h1>
+
+<article>
+  <p>Insert book info here</p>
+  <span>Reservation date: <%= @reservation.reserved_on.strftime('%B %d, %Y') %> </span><br/>
+  <span>Due date: <%= @reservation.due_on.strftime('%B %d, %Y') %> </span>
+</article>
