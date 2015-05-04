@@ -18,11 +18,18 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
+    if @current_user.admin
+      @book = Book.new
+    else
+      redirect_to @books
+    end
   end
 
   # GET /books/1/edit
   def edit
+    if !@current_user.admin
+      redirect_to @book
+    end
   end
 
   # POST /books
