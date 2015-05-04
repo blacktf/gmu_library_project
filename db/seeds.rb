@@ -69,6 +69,7 @@ larsson.books.where(title: 'The Girl Who Played With Fire').first_or_create!(isb
 # IMPORTANT - DATES are in DD/MM/YYYY format!
 hobbit = Book.where( title: 'The Hobbit' ).first
 fire = Book.where( title: 'The Girl Who Played With Fire').first
-Reservation.where( user: joeuser, book: hobbit).first_or_create!( reserved_on: '01/05/2015', due_on: '08/05/2015')
-Reservation.where( user: maryuser, book: hobbit).first_or_create!( reserved_on: '01/04/2015', due_on: '08/04/2015')
+Reservation.where( user: joeuser, book: hobbit).first_or_create!( reserved_on: '2015-05-01', due_on: '2015-05-08')
+Reservation.where( user: maryuser, book: hobbit).first_or_create!( reserved_on: '2015-04-01', due_on: '2015-04-08')
+Reservation.where( user: maryuser, book: fire).first_or_create!( reserved_on: '2015-04-01', due_on: '2015-04-08')
 # END - Creating reservations
