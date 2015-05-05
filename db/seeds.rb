@@ -31,7 +31,7 @@ admin = User.where(user_id: 'admin')
                   admin: true
                 )
 
-maryuser = User.where(user_id: 'Mary')
+maryuser = User.where(user_id: 'mary')
               .first_or_create!(
                 name: 'Mary User',
                 password_digest: BCrypt::Password.create('password'),
