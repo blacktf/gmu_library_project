@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   before_filter :authorize
 
   def index
-    @books = Book.all
+    @books = Book.order(:title).page(params[:page])
   end
 
   # GET /books/1

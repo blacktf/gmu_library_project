@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  resources :reservations
 
-  get "/authors" => "authors#index", as: 'authors'
+    resources :reservations
+
+    get "/authors" => "authors#index", as: 'authors'
+
+  # show long list book with paginations
     resources :books do
-  end
+  		get 'page/:page', :action => :index, :on => :collection
+    end
 
-  root 'books#index'
+    root 'books#index'
 
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'

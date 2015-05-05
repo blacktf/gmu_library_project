@@ -1,12 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Books</h1>
-
+<!--showing books with pagination  -->
+<%= page_entries_info @books %>
 <ol>
 <% @books.each do |book| %>
-  <li><%= book.title %> by <%= book.author.name %></li>
+  <li><%= link_to(book.title, book) %> by <%= book.author.name %></li>
 <% end %>
 </ol>
+<%= paginate @books %>
+
+
 <!--<table>
   <thead>
     <tr>
@@ -24,6 +28,8 @@
     <% end %>
   </tbody>
 </table>-->
+
+
 
 <br>
 
