@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   def new
     if @current_user.admin
       @book = Book.new
+      @authors = Author.all
     else
       redirect_to @books
     end
@@ -27,7 +28,9 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
-    if !@current_user.admin
+    if @current_user.admin
+      @authors = Author.all
+    else
       redirect_to @book
     end
   end
