@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+<% content_for :title, @book.title %>
+<article class="book">
+  <header>
+    <h3><%= @book.title %></h3>
+  </header>
+ <h5>Details</h5> 
+  <p><label>ISBN:</label> <%= @book.isbn %></p>
+  <p><label>Author:</label> <%= @book.author.name %></p>
+  <p><label>Genre:</label> <%= @book.genre %></p>
+  <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
+  <p><label>Published On:</label> <%= @book.published_on %></p>
+  <p><label>Available:</label> <%= number_with_delimiter(@book.total_in_library) %></p>
+</article>
+
+<%= button_to 'Reserve', @book %>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
+
+
+
