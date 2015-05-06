@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:new, :show, :edit, :update, :destroy]
 
   before_filter :authorize
 
@@ -13,13 +13,11 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = @user.reservations.new
-    @reservation.reserved_on = DateTime.now
-    @reservation.due_on = 7.days.from_now
+    @reservation = @book.reservations.new
   end
 
   def create
-    @reservation = @user.reservations.new(reservation_params)
+    @reservation = @book.reservations.new(reservation_params)
     if @reservation.save
       redirect_to user_reservations_path(@user), notice: 'Reservation created!'
     else
@@ -38,13 +36,16 @@ class ReservationsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_reservation
-    @reservation = Reservation.find(params[:id])
+  def set_book
+    @book = Book.find(params[:book_id])
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit( :reserved_on, :due_on)
+      params[:reservation] ||= {}
+      params[:reservation] = params[:reservation].merge(:reserved_on => DateTime.now, :due_on => 7.days.from_now,
+        :user_id => @user.id, :book_id => params[:id])
+      params.require(:reservation).permit( :reserved_on, :due_on, :user_id, :book_id)
     end
 
 end
