@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<article class="book">
+  <header>
+    <h2><%= @book.title %></h2>
+  </header>
+  <%= image_tag @book.image_cover_url %>
+  <p><%= @book.abstract %></p>
+  <h3>Details</h3>
+  <p><label>ISBN:</label> <%= @book.isbn %></p>
+  <p><label>Author:</label> <%= @book.author.name %></p>
+  <p><label>Genre:</label> <%= @book.genre %></p>
+  <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
+  <p><label>Published on:</label> <%= @book.published_on.strftime('%B %d, %Y') %></p>
+  <p><label>Available to reserve:</label> <%= @book.total_in_library %></p>
+<%= link_to 'Reserve', new_book_reservation_path(@book) %>
