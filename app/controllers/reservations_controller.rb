@@ -1,8 +1,9 @@
 class ReservationsController < ApplicationController
 
-  before_action :set_book, only: [:new, :show, :edit, :update, :destroy]
-  before_action :before_reserve, only: [:new, :create]
   before_filter :authorize
+  before_action :set_book, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_reservation, only: [:show, :destroy]
+  before_action :before_reserve, only: [:new, :create]
 
   def index
     @reservations = Reservation.where( user: @current_user)
@@ -30,6 +31,11 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def destroy
+    @reservation.destroy
+    redirect_to my_reservations_path(@user), notice: 'Book returned!'
+  end
+
   def overdue
     if @current_user.admin
       @reservations = Reservation.overdue
@@ -41,8 +47,6 @@ class ReservationsController < ApplicationController
   private
 
   def before_reserve
-    puts 'Reservation count: ' + @book.reservations.count.to_s
-    puts 'Book count: ' + @book.total_in_library.to_s
     if @book.reservations.count >= @book.total_in_library
       redirect_to my_reservations_path(@current_user), notice: 'No longer available. Plese try again later.'
       return
@@ -52,6 +56,10 @@ class ReservationsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_book
     @book = Book.find(params[:book_id])
+  end
+
+  def set_reservation
+    @reservation = @book.reservations.where( user: @current_user).first
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.

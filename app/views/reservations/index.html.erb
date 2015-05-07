@@ -2,6 +2,6 @@
 
 <ol>
 <% @reservations.each do |reservation| %>
-  <li><%= link_to(reservation.book.title, reservation.book) %></li>
+  <li><%= link_to(reservation.book.title, book_reservation_path(reservation.book, reservation)) %></li>
 <% end %>
 </ol>
