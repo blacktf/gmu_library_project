@@ -1,7 +1,16 @@
 <h2>Overdue Reservations</h2>
 
-<ol>
+<table>
 <% @reservations.each do |reservation| %>
-  <li><%= link_to(reservation.book.title, reservation.book) %> <%= pluralize((Time.now.to_date - reservation.due_on.to_date).to_i, 'day') %> overdue</li>
+  <tr>
+    <td><% image_tag reservation.book.image_cover_url %></td>
+    <td>
+      <h3><%= link_to(reservation.book.title, reservation.book) %></h3>
+      <label>Reserved by:</label> <%= reservation.user.name %><br />
+      <label>Reserved on:</label> <%= reservation.reserved_on.to_formatted_s(:long) %><br />
+      <label>Due on:</label> <%= reservation.due_on.to_formatted_s(:long) %><br />
+      <p>Overdue!</p>
+    </td>
+  </tr>
 <% end %>
-</ol>
+</table>

@@ -12,7 +12,22 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.order(:title).page(params[:page])
+
+    if params[:search]
+
+      @books = Book.search(params[:search]).order("created_at DESC")
+      if @books.empty?
+         flash[:notice] = "not found!"
+         @books = Book.order(:title).page(params[:page])
+      else
+         flash[:notice] = "found!"
+       # @book = Book.find(params[:id])
+      end
+    else
+       flash[:notice] = "not search"
+      @books = Book.order(:title).page(params[:page])
+    end
+
   end
 
   # GET /books/1
@@ -72,10 +87,14 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
-    @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
+    if @current_user.admin
+      @book.destroy
+      respond_to do |format|
+        format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to @book
     end
   end
 
