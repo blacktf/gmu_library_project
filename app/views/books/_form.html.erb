@@ -13,11 +13,14 @@
 <%= form_for(@book) do |f| %>
   <%= f.label :title %> <%= f.text_field :title, autofocus: true %><br />
   <%= f.label :author %> <%= f.collection_select(:author_id, Author.all, :id, :name, { prompt: "Pick one"}) %><br />
-  <%= f.label :pages %> <%= f.text_field :pages %><br />
   <%= f.label :isbn %> <%= f.text_field :isbn %><br />
-  <%= f.label :genre %> <%= f.text_field :genre %><br />
   <%= f.label :abstract %><br />
   <%= f.text_area :abstract %><br />
+  <%= f.label :pages %> <%= f.text_field :pages %><br />
+  <%= f.label :total_in_library %> <%= f.text_field :total_in_library %><br />
+  <%= f.label :genre %> <%= f.text_field :genre %><br />
+  <%= f.label :published_on %> <%= f.date_select :published_on %><br />
+  <%= f.label :image_cover_url %> <%= f.text_field :image_cover_url %><br />
 
   <div class="actions">
     <%= f.submit %>
