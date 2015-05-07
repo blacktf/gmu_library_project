@@ -12,7 +12,13 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.order(:title).page(params[:page])
+
+    if params[:search]
+      @books = Book.search(params[:search]).order("created_at DESC")
+    else
+       @books = Book.order(:title).page(params[:page])
+    end
+
   end
 
   # GET /books/1

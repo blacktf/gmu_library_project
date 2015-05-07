@@ -10,11 +10,19 @@
 
   <div class="container">
     <%= render '/layouts/header' %>
+
   </div>
+
   <div class="container">
     <div class="col-xs-9">
+
       <%= render '/shared/flashes' %>
+    <div>
+      <%= render '/layouts/search' %>
+    </div>
+
       <%= yield %>
+
     </div>
     <div class="col-xs-3">
       <%= render '/layouts/sidebar' %>
