@@ -4,8 +4,8 @@ class Book < ActiveRecord::Base
 
 
  def self.search(query)
-    # where(:title, query) -> This would return an exact match of the query
-    where("title like ?", "%#{query}%")
+    # search by title , author or isbn
+    where("title like ?  or isbn like ? ", "%#{query}%", "%#{query}%")
   end
 
 
