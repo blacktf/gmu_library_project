@@ -1,21 +1,15 @@
-<h1><%= @author.name %></h1>
-<div>
-  <div style="float:left;"><img src="<%= @author.image_url %>" alt="" /></div>
-  <div><%= @author.biography %></div>
-</div>
-<h2>Details</h2>
-<p>
-  <span style="font-weight:bold;">Date of Birth: </span>
-  <%= @author.dob %>
-</p>
-<p>
-  <span style="font-weight:bold;">Nationality: </span>
-  <%= @author.nationality %>
-</p>
-<p>
-  <span style="font-weight:bold;">Awards: </span>
-  <%= @author.awards %>
-</p>
-<h2>Publications</h2>
+<article class="author">
+  <header>
+    <h2><%= @author.name %></h2>
+  </header>
+  <%= image_tag @author.image_url %>
+  <p><%= @author.biography %></p>
+  <h3>Details</h3>
+  <p><label>Date of Birth:</label> <%= @author.dob %></p>
+  <p><label>Nationality:</label> <%= @author.nationality %></p>
+  <p><label>Awards:</label> <%= @author.awards %></p>
+</article>
+
+<h3>Publications</h2>
 <!-- should be a partial -->
 <%= render "/shared/list_books" %>
