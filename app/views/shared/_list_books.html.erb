@@ -1,0 +1,5 @@
+<ol>
+<% @books.each do |book| %>
+  <li><%= link_to(book.title, book) %> by <%= book.author.name %></li>
+<% end %>
+</ol>

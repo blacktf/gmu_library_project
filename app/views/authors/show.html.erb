@@ -17,6 +17,5 @@
   <%= @author.awards %>
 </p>
 <h2>Publications</h2>
-<% @books.each do |book| %>
-  <li><%= link_to(book.title, book) %> by <%= book.author.name %></li>
-<% end %>
+<!-- should be a partial -->
+<%= render "/shared/list_books" %>

@@ -4,11 +4,9 @@
 
 <!--showing books with pagination  -->
 <%= page_entries_info @books %>
-<ol>
-<% @books.each do |book| %>
-  <li><%= link_to(book.title, book) %> by <%= book.author.name %></li>
-<% end %>
-</ol>
+
+<%= render "/shared/list_books" %>
+
 <%= paginate @books %>
 
 <!--<table>
