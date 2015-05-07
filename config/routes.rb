@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     #resources :reservations do
     #end
 
-    get '/reservations/:id' => 'reservations#index', as: 'my_reservations'
+    get '/reservations' => 'reservations#index', as: 'my_reservations'
     resources :authors
     #get "/authors" => "authors#index", as: 'authors'
 
