@@ -15,8 +15,11 @@
   <p><label>Published On:</label> <%= @book.published_on %></p>
   <p><label>Available to reserve:</label> <%= (@book.total_in_library - @book.reservations.size) %></p>
 </article>
-
+<% if @book.reservations.where(user: @current_user).exists? %>
+  <p><label>You already have this book reserved.</label></p>
+<% else %>
 <%= button_to 'Reserve', new_book_reservation_path(@book), method: :get %>
+<% end %>
 <!--<%= button_to 'Delete', @book,
                method: :delete,
                data: { confirm: 'Are you sure?' } %>-->
