@@ -1,7 +1,7 @@
 <h1>Authors</h1>
-<p>Available as of <%= @available_at %></p>
+
 <ol>
-<% @authors.each do |authors| %>
-  <li><%= authors %></li>
+<% @authors.each do |author| %>
+  <li><%= link_to(author.name, author) %></li>
 <% end %>
 </ol>

@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     #resources :reservations do
     #end
 
-    get "/authors" => "authors#index", as: 'authors'
     get '/reservations/:id' => 'reservations#index', as: 'my_reservations'
+    resources :authors
+    #get "/authors" => "authors#index", as: 'authors'
 
   # show long list book with paginations
     resources :books do

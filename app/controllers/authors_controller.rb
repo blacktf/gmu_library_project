@@ -1,6 +1,13 @@
 class AuthorsController < ApplicationController
+
+  before_filter :authorize
+
   def index
-    @available_at = Time.now
-    @authors = ["Mike Smith", "Jame Smith", "Jame Smith", "Jame Smith"]
+    @authors = Author.all
+  end
+
+  def show
+    @author = Author.find(params[:id])
+    @books = @author.books
   end
 end
