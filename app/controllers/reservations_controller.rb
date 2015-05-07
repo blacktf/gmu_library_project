@@ -13,10 +13,6 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    if ( @book.reservations.size < @book.total_in_library )
-      redirect_to my_reservations_path(@current_user), notice: 'No longer available. Plese try again later.'
-      return
-    end
     @reservation = @book.reservations.new(reservation_params)
     if @reservation.save
       redirect_to my_reservations_path(@current_user), notice: 'Reservation created!'
@@ -45,7 +41,9 @@ class ReservationsController < ApplicationController
   private
 
   def before_reserve
-    if ( @book.reservations.size >= @book.total_in_library )
+    puts 'Reservation count: ' + @book.reservations.count.to_s
+    puts 'Book count: ' + @book.total_in_library.to_s
+    if @book.reservations.count >= @book.total_in_library
       redirect_to my_reservations_path(@current_user), notice: 'No longer available. Plese try again later.'
       return
     end

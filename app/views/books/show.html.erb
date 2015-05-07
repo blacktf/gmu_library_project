@@ -11,7 +11,7 @@
   <p><label>Genre:</label> <%= @book.genre %></p>
   <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
   <p><label>Published On:</label> <%= @book.published_on %></p>
-  <p><label>Available to reserve:</label> <%= @book.total_in_library %></p>
+  <p><label>Available to reserve:</label> <%= (@book.total_in_library - @book.reservations.size) %></p>
 </article>
 
 <%= button_to 'Reserve', new_book_reservation_path(@book), method: :get %>
