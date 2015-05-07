@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
 
   before_action :set_book, only: [:new, :show, :edit, :update, :destroy]
-
+  before_action :before_reserve, only: [:new, :create]
   before_filter :authorize
 
   def index
@@ -13,11 +13,15 @@ class ReservationsController < ApplicationController
   end
 
   def new
+    if ( @book.reservations.size < @book.total_in_library )
+      redirect_to my_reservations_path(@current_user), notice: 'No longer available. Plese try again later.'
+      return
+    end
     @reservation = @book.reservations.new(reservation_params)
     if @reservation.save
       redirect_to my_reservations_path(@current_user), notice: 'Reservation created!'
     else
-      render :new
+      redirect_to my_reservations_path(@current_user), notice: 'Error: No reservation created!'
     end
   end
 
@@ -39,6 +43,13 @@ class ReservationsController < ApplicationController
   end
 
   private
+
+  def before_reserve
+    if ( @book.reservations.size >= @book.total_in_library )
+      redirect_to my_reservations_path(@current_user), notice: 'No longer available. Plese try again later.'
+      return
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_book
