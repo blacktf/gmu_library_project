@@ -1,0 +1,22 @@
+<h1><%= @author.name %></h1>
+<div>
+  <div style="float:left;"><img src="<%= @author.image_url %>" alt="" /></div>
+  <div><%= @author.biography %></div>
+</div>
+<h2>Details</h2>
+<p>
+  <span style="font-weight:bold;">Date of Birth: </span>
+  <%= @author.dob %>
+</p>
+<p>
+  <span style="font-weight:bold;">Nationality: </span>
+  <%= @author.nationality %>
+</p>
+<p>
+  <span style="font-weight:bold;">Awards: </span>
+  <%= @author.awards %>
+</p>
+<h2>Publications</h2>
+<% @books.each do |book| %>
+  <li><%= link_to(book.title, book) %> by <%= book.author.name %></li>
+<% end %>
