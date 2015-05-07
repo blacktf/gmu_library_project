@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
 
   before_filter :authorize
   before_action :set_book, only: [:new, :show, :edit, :update, :destroy]
-  before_action :set_reservation, only: [:show]
+  before_action :set_reservation, only: [:show, :destroy]
   before_action :before_reserve, only: [:new, :create]
 
   def index
@@ -29,6 +29,11 @@ class ReservationsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @reservation.destroy
+    redirect_to my_reservations_path(@user), notice: 'Book returned!'
   end
 
   def overdue
