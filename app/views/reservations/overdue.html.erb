@@ -2,6 +2,6 @@
 
 <ol>
 <% @reservations.each do |reservation| %>
-  <li><%= link_to(reservation.book.title, reservation) %> x days overdue</li>
+  <li><%= link_to(reservation.book.title, reservation.book) %> x days overdue</li>
 <% end %>
 </ol>
