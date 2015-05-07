@@ -7,8 +7,8 @@
     <td>
       <h3><%= link_to(reservation.book.title, reservation.book) %></h3>
       <label>Reserved by:</label> <%= reservation.user.name %><br />
-      <label>Reserved on:</label> <%= reservation.reserved_on %><br />
-      <label>Due on:</label> <%= reservation.due_on %><br />
+      <label>Reserved on:</label> <%= reservation.reserved_on.to_formatted_s(:long) %><br />
+      <label>Due on:</label> <%= reservation.due_on.to_formatted_s(:long) %><br />
       <p>Overdue!</p>
     </td>
   </tr>
