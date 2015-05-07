@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   before_filter :authorize
 
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.where( user: @current_user)
   end
 
   def show
@@ -13,13 +13,18 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = @book.reservations.new
+    @reservation = @book.reservations.new(reservation_params)
+    if @reservation.save
+      redirect_to my_reservations_path(@current_user), notice: 'Reservation created!'
+    else
+      render :new
+    end
   end
 
   def create
     @reservation = @book.reservations.new(reservation_params)
     if @reservation.save
-      redirect_to user_reservations_path(@user), notice: 'Reservation created!'
+      redirect_to book_reservations_path(@user), notice: 'Reservation created!'
     else
       render :new
     end
@@ -44,7 +49,7 @@ class ReservationsController < ApplicationController
     def reservation_params
       params[:reservation] ||= {}
       params[:reservation] = params[:reservation].merge(:reserved_on => DateTime.now, :due_on => 7.days.from_now,
-        :user_id => @user.id, :book_id => params[:id])
+        :user_id => @current_user.id, :book_id => params[:id])
       params.require(:reservation).permit( :reserved_on, :due_on, :user_id, :book_id)
     end
 

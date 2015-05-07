@@ -1,11 +1,15 @@
 class BooksController < ApplicationController
 
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:reserve, :show, :edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
 
   before_filter :authorize
+
+  def reserve
+
+  end
 
   def index
     @books = Book.order(:title).page(params[:page])
