@@ -61,32 +61,32 @@ moore = Author.where(name: 'Alan Moore')
 
 tolkien.books.where(title: 'The Hobbit').first_or_create!(isbn: '1234-567-8910',
       genre: 'fantasy', abstract: 'A hobbit goes on an unexpected journey.',
-      pages: 250, image_cover_url: 'hobbit_cover.jpg',
+      pages: 250, image_cover_url: 'The_Hobbit.jpg',
       published_on: '1935-06-25', total_in_library: 2)
 
 tolkien.books.where(title: 'Sir Gawain and the Green Knight').first_or_create!(isbn: '0345277600',
       genre: 'fantasy', abstract: 'A modern translation of the ancient tale',
-      pages: 165, image_cover_url: 'sir_gawain_cover.jpg',
+      pages: 165, image_cover_url: 'Gawain_Green_Knight.jpg',
       published_on: '1975-06-05', total_in_library: 2)
 
 tolkien.books.where(title: 'The Silmarillion').first_or_create!(isbn: '0395257301',
       genre: 'fantasy', abstract: 'The ancient legends of Middle-earth',
-      pages: 365, image_cover_url: 'silmarillion_cover.jpg',
+      pages: 365, image_cover_url: 'The_Silmarillion.jpg',
       published_on: '1977-03-05', total_in_library: 1)
 
 larsson.books.where(title: 'The Girl With the Dragon Tattoo').first_or_create!(isbn: '9780307455352',
       genre: 'crime', abstract: 'Crusading publisher Mikael Blomkvist has decided...',
-      pages: 644, image_cover_url: 'girl_dragon_tattoo_cover.jpg',
+      pages: 644, image_cover_url: 'Girl_Tattoo.jpg',
       published_on: '2008-03-01', total_in_library: 3)
 
 larsson.books.where(title: 'The Girl Who Played With Fire').first_or_create!(isbn: '978-0-307-47615-9',
       genre: 'crime', abstract: 'Crusading publisher Mikael Blomkvist has decided...',
-      pages: 724, image_cover_url: 'girl_played_fire_cover.jpg',
+      pages: 724, image_cover_url: 'Girl_Played_Fire.jpg',
       published_on: '2010-03-01', total_in_library: 1)
 
 moore.books.where(title: 'Watchmen').first_or_create!(isbn: '9780283548848',
       genre: 'graphic novel', abstract: 'Who Watches the Watchment',
-      pages: 200, image_cover_url: 'watchmen_cover.jpg',
+      pages: 200, image_cover_url: 'Watchmen.jpg',
       published_on: '1986-01-01', total_in_library: 2)
 
 # END - Creating authors and books
