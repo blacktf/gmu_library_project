@@ -5,7 +5,7 @@
 
 
 <%= form_tag(books_path, :method => "get", id: "search-form") do %>
-    <div class="input-append">
+    <div class="input-append" align="right">
       <%= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Books" %>
       <%= submit_tag "Search", :title => nil %>
 
@@ -15,10 +15,10 @@
 
 
 <!--showing books with pagination  -->
-<%= page_entries_info @books %>
 
 <%= render "/shared/list_books" %>
 
-<%= paginate @books %>
+<div style="float: left;margin-left: 40px;"><%= page_entries_info @books %></div>
+<div style="float: right;"><%= paginate @books %></div>
 
 <br>
