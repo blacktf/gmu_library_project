@@ -1,6 +1,6 @@
 <ul style="list-style: none;">
 <% @books.each do |book| %>
-  <li style="background-color: gray;">
-    <div style="background-color: gray;"><%= image_tag book.image_cover_url %><%= link_to(book.title, book) %> by <%= book.author.name %></div></li><br/>
+  <li>
+    <div style="background-color: #CCCCCC;"><p><%= image_tag book.image_cover_url, :style => "margin-left: 25px; margin-top: 10px; margin-bottom: 10px; margin-right: 5px;" %><%= link_to(book.title, book) %> by <%= book.author.name %></p></div></li><br/>
 <% end %>
 </ul>
