@@ -15,13 +15,13 @@
 </article>
 
 <% if @current_user.admin %>
-  <%= link_to 'Edit', edit_book_path(@book) %>
-  <%= button_to ("Delete" + @book.title), @book,
+  <div><%= button_to 'Edit', edit_book_path(@book), :style => "display: inline;", method: :get %>
+  <%= button_to ("Delete " + @book.title), @book, :style => "display: inline;",
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
 <% end %>
 <% if @book.reservations.where(user: @current_user).exists? %>
-  <p><label>You already have this book reserved.</label></p>
+  </div><p><label>You already have this book reserved.</label></p>
 <% else %>
-<%= button_to ('Reserve'), new_book_reservation_path(@book), method: :get %>
+<%= button_to 'Reserve', new_book_reservation_path(@book), method: :get %></div>
 <% end %>
