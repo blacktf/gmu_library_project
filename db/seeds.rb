@@ -59,6 +59,26 @@ moore = Author.where(name: 'Alan Moore')
     biography: 'Alan Moore is an English writer primarily known for his work in comic books including Watchmen, V for Vendetta, and From Hell. Frequently described as the best graphic novel writer in history, he has been called "one of the most important British writers of the last fifty years".',
     image_url: 'Alan_Moore.jpg')
 
+larsson1 = Author.where(name: 'Stieg Larsson1')
+  .first_or_create!(dob: '1954-08-15',
+    nationality: 'Swedish', awards: 'Blah',
+    biography: 'Wrote "Girl with the Dragon Tattoo" series',
+    image_url: 'larsson_pic.jpg')
+
+larsson2 = Author.where(name: 'Stieg Larsson2')
+  .first_or_create!(dob: '1954-08-15',
+    nationality: 'Swedish', awards: 'Blah',
+    biography: 'Wrote "Girl with the Dragon Tattoo" series',
+    image_url: 'larsson_pic.jpg')
+
+larsson3 = Author.where(name: 'Stieg Larsson3')
+  .first_or_create!(dob: '1954-08-15',
+    nationality: 'Swedish', awards: 'Blah',
+    biography: 'Wrote "Girl with the Dragon Tattoo" series',
+    image_url: 'larsson_pic.jpg')
+
+
+
 tolkien.books.where(title: 'The Hobbit').first_or_create!(isbn: '1234-567-8910',
       genre: 'fantasy', abstract: 'A hobbit goes on an unexpected journey.',
       pages: 250, image_cover_url: 'The_Hobbit.jpg',
