@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+.bookButton {
+  float: left;
+  width: auto;
+  margin-bottom:5px;
+}
+
+#deleteButton input {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  height: 22px;
+}
