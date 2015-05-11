@@ -16,14 +16,8 @@ class BooksController < ApplicationController
     if params[:search]
 
       @books = Book.search(params[:search]).order("created_at DESC").page(params[:page])
-      if @books.empty?
-         flash[:notice] = "not found!"
-      else
-         flash[:notice] = "found!"
-      end
 
     else
-       flash[:notice] = "not search"
       @books = Book.order(:title).page(params[:page])
     end
 
