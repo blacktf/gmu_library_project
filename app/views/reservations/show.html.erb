@@ -1,9 +1,13 @@
 <h1><%= @reservation.book.title %></h1>
 
-<article>
-  <p>Insert book info here</p>
-  <span>Reservation date: <%= @reservation.reserved_on.strftime('%B %d, %Y') %> </span><br/>
-  <span>Due date: <%= @reservation.due_on.strftime('%B %d, %Y') %> </span>
-  <br>
+<div style="background-color: #CCCCCC; overflow: hidden;"><p><%= image_tag @reservation.book.image_cover_url, :style => "margin-left: 20px; margin-top: 10px; margin-bottom: 10px; margin-right: 5px;float:left;" %>
+  <span style="">
+    <%= link_to(@reservation.book.title, @reservation.book) %><br/>
+    Reservation date: <%= @reservation.reserved_on.strftime('%B %d, %Y') %><br/>
+    Due date: <%= @reservation.due_on.strftime('%B %d, %Y') %>
+  </span>
+  <div id="deleteButton" class="bookButton" style="float:right; margin-top: 40px;">
   <%= button_to 'Return', "/books/#{@reservation.book.id}/reservations/#{@reservation.id}" ,method: :delete %>
-</article>
+</div>
+  </p>
+</div>
