@@ -1,11 +1,12 @@
 <h1>Authors</h1>
 <%= page_entries_info @authors %>
-<ol>
+<ul style="list-style: none;">
 <% @authors.each do |author| %>
   <li>
     <div style="background-color: #CCCCCC;"><p><%= image_tag author.image_url, :style => "margin-left: 20px; margin-top: 10px; margin-bottom: 10px; margin-right: 5px;" %><span style="vertical-align:35px;"><%= link_to(author.name, author) %></span></p></div></li><br/>
+
 <% end %>
-</ol>
+</ul>
 <%= paginate @authors %>
 
 
