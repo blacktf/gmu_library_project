@@ -15,8 +15,10 @@ class BooksController < ApplicationController
 
     if params[:search]
 
-      @books = Book.search(params[:search]).order("created_at DESC").page(params[:page])
-
+      #@books = Book.search(params[:search]).order("created_at DESC").page(params[:page])
+      @books = Book.joins(:author).where("title like ? OR isbn like ? OR authors.name like ?",
+       "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+      .order("created_at DESC").page(params[:page])
     else
       @books = Book.order(:title).page(params[:page])
     end
