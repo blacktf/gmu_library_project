@@ -28,3 +28,15 @@
   margin-left: 3px;
   height: 22px;
 }
+
+#flashes
+{
+  background-color: #80E6FF;
+  height: 30px;
+}
+
+.notice {
+  margin-left: 10px;
+  top: 5px;
+  position: relative;
+}
