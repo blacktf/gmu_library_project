@@ -1,5 +1,5 @@
 <h1>Authors</h1>
-<%= page_entries_info @authors %>
+
 <ul style="list-style: none;">
 <% @authors.each do |author| %>
   <li>
@@ -7,7 +7,9 @@
 
 <% end %>
 </ul>
-<%= paginate @authors %>
+<div style="float: left;margin-left: 40px;"><%= page_entries_info @authors %></div>
+<div style="float: right;"><%= paginate @authors %></div>
+
 
 
 
