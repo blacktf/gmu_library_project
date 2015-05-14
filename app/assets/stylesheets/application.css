@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+.panel-para {
+  border-style: ridge;
+  border-width: 1px;
+}
+
 .bookButton {
   float: left;
   width: auto;

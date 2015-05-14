@@ -5,25 +5,37 @@
       <h3 class="panel-title">Things to do...</h3>
     </div>
     <div class="panel-body">
-      <p>
-        <%= link_to 'All Books', books_path %>
+      <p class="panel-para">
+        <%= link_to books_path  do %>
+        <span class="glyphicon glyphicon-th-list" style=""> All Books</span>
+        <% end %>
       </p>
-      <p>
-        <%= link_to 'Authors', authors_path %>
+      <p class="panel-para">
+        <%= link_to authors_path, class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-user"> Authors</i>
+        <% end %>
       </p>
-      <p>
-        <%= link_to 'My Reservations', my_reservations_path(@current_user) %>
+      <p class="panel-para">
+        <%= link_to my_reservations_path(@current_user), class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-tasks">  My Reservations</i>
+        <% end %>
       </p>
       <% if @current_user.admin %>
-        <p>
-          <%= link_to 'New Book', new_book_path %>
+        <p class="panel-para">
+          <%= link_to new_book_path, class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-save"> New Book</i>
+        <% end %>
         </p>
-        <p>
-          <%= link_to 'Overdue Books', overdue_path %>
+        <p class="panel-para">
+          <%= link_to overdue_path, class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-save"> Overdue Books</i>
+        <% end %>
         </p>
       <% end %>
-      <p>
-        <%= link_to 'Logout', logout_path %>
+      <p class="panel-para">
+        <%= link_to logout_path, class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-off"> Logout</i>
+        <% end %>
       </p>
     </div>
   </div>
