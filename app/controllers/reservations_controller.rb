@@ -65,7 +65,7 @@ class ReservationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
       params[:reservation] ||= {}
-      params[:reservation] = params[:reservation].merge(:reserved_on => DateTime.now, :due_on => 7.days.from_now,
+      params[:reservation] = params[:reservation].merge(:reserved_on => DateTime.now, :due_on => 6.days.from_now,
         :user_id => @current_user.id, :book_id => params[:id])
       params.require(:reservation).permit( :reserved_on, :due_on, :user_id, :book_id)
     end
